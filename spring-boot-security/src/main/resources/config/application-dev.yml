@@ -1,0 +1,8 @@
+#服务端口号
+server:
+  port: 8080 #原来是http的8080
+
+spring:
+  application:
+    name: spring-boot-security
+  profiles: dev #开发环境

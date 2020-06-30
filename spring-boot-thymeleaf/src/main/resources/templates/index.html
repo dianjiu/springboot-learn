@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Thymeleaf入门案例</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/style.css}"/>
+    <!--<link rel="stylesheet" type="text/css" href="css/style.css"/>-->
+    <script th:src="@{js/test.js}"></script>
+    <!--<script src="js/test.js"></script>-->
+</head>
+<body>
+    <h1>Thymeleaf入门案例:</h1>
+    <span th:text="hello"></span>
+    <hr>
+    <span th:text="${msg}"></span>
+</body>
+</html>
