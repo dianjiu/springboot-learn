@@ -1,0 +1,15 @@
+#服务端口号
+server:
+  port: 8080 #原来是http的8080
+
+spring:
+  profiles:
+    active: ${cfg.env}
+
+# 自定义jwt key
+jwt:
+  tokenHeader: Authorization #JWT存储的请求头
+  secret: mySecret #JWT加解密使用的密钥
+  expiration: 604800 #JWT的超期限时间(60*60*24)
+  tokenHead: dianjiu  #JWT负载中拿到开头
+

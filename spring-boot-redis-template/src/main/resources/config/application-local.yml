@@ -1,0 +1,36 @@
+#服务端口号
+server:
+  port: 8080 #原来是http的8080
+
+spring:
+  application:
+    name: spring-boot-redis-jedis
+  profiles: local #开发环境
+  redis:
+    database: 1
+    host: 10.1.109.97
+    password:
+    port: 8001
+    timeout: 3000
+    jedis:
+      pool:
+        max-idle: 500
+        min-idle: 50
+        max-active: 2000
+        max-wait: 1000
+    testOnBorrow: true
+#  redis:
+#    pool:
+#      # 连接池最大连接数（使用负值表示没有限制）
+#      max-active: 10
+#      # 连接池最大阻塞等待时间（使用负值表示没有限制）
+#      max-wait: -1
+#      # 连接池中的最大空闲连接
+#      max-idle: 10
+#      # 连接池中的最小空闲连接
+#      min-idle: 0
+#      # 连接超时时间（毫秒）
+#      timeout: 20000
+#    cluster:
+#      max-redirects: 4
+#      nodes: 10.1.109.97:8001,10.1.109.97:8002,10.1.109.98:8001,10.1.109.98:8002

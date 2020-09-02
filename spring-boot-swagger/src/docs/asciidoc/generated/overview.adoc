@@ -1,0 +1,32 @@
+= Swagger Demo Restful API Docs
+
+
+[[_overview]]
+== Overview
+Swagger 示例 Restful Api 文档
+
+
+=== Version information
+[%hardbreaks]
+__Version__ : 1.0
+
+
+=== Contact information
+[%hardbreaks]
+__Contact__ : 点九
+__Contact Email__ : zwqh@clover1314.com
+
+
+=== URI scheme
+[%hardbreaks]
+__Host__ : 127.0.0.1:8282
+__BasePath__ : /
+
+
+=== Tags
+
+* hello : Hello Controller
+* user : User Controller
+
+
+
