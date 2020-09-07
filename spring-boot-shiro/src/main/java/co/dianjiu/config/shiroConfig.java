@@ -47,6 +47,11 @@ public class shiroConfig {
         Map<String, String> map = new HashMap<>();
         //登出
         map.put("/logout", "logout");
+        // swagger 允许匿名访问
+        map.put("/swagger-ui.html", "anon");
+        map.put("/doc.html", "anon");
+        map.put("/webjars/**", "anon");
+        map.put("/v2/**", "anon");
         //对所有用户认证
         map.put("/**", "authc");
         //登录
@@ -59,7 +64,7 @@ public class shiroConfig {
         return shiroFilterFactoryBean;
     }
 
-
+    // 加入注解的使用，不加入这个注解不生效
     @Bean
     public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
