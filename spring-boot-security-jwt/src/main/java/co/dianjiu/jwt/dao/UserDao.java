@@ -1,6 +1,7 @@
 package co.dianjiu.jwt.dao;
 
-import co.dianjiu.security.model.UserEntity;
+
+import co.dianjiu.jwt.model.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper

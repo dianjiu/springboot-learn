@@ -1,9 +1,11 @@
 package co.dianjiu.jwt.dao;
 
-import co.dianjiu.security.model.Role;
+
+import co.dianjiu.jwt.model.Role;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
+
 
 @Mapper
 public interface RoleDao {
