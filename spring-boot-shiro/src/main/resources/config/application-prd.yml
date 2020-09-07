@@ -1,0 +1,4 @@
+spring:
+  application:
+    name: dianjiu-blog
+  profiles: prd #开发环境
