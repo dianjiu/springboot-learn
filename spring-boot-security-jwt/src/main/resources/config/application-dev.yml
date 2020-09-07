@@ -1,4 +1,0 @@
-spring:
-  application:
-    name: spring-boot-security
-  profiles: dev #开发环境
