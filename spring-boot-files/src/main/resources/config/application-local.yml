@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: dianjiu-blog
+  profiles: local #开发环境
+  servlet:
+    multipart:
+      enabled: true
+      # 最大支持文件大小
+      max-file-size: 10MB
+      # 最大支持请求大小
+      max-request-size: 10MB
+
+#文件存储路径
+filePath: D:/file/
