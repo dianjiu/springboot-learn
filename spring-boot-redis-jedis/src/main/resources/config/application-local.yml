@@ -9,9 +9,9 @@ spring:
   #redis配置开始
   redis:
     # Redis服务器地址
-    host: 10.1.109.97
+    host: 192.168.31.162
     # Redis服务器连接端口
-    port: 8001
+    port: 6379
     # Redis服务器连接密码（默认为空）
     password:
     # Redis数据库索引（默认为0）

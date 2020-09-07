@@ -8,9 +8,9 @@ spring:
   profiles: local #开发环境
   redis:
     database: 1
-    host: 10.1.109.97
+    host: 192.168.31.162
     password:
-    port: 8001
+    port: 6379
     timeout: 3000
     jedis:
       pool:

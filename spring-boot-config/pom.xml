@@ -11,7 +11,7 @@
     <!-- 引入父工程的spring boot依赖 -->
     <parent>
         <groupId>co.dianjiu</groupId>
-        <artifactId>spring-boot-learn</artifactId>
+        <artifactId>springboot-learn</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
