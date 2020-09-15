@@ -64,7 +64,7 @@ public class MinIOController {
             return;
         }
         try {
-            // http://minio.dianjiu.cc/test/test_1600150216537.jpg
+            // http://192.168.31.162:9000/test/test_1600150216537.jpg
             // 拿到文件路径 test_1600150216537.jpg
             //String url = fileUrl.split("9000/")[1];
             String url = fileUrl.split("/")[4];
