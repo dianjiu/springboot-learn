@@ -1,0 +1,10 @@
+#服务端口号
+server:
+  port: 8787 #原来是http的8080
+
+spring:
+  application:
+    name: dianjiu-minio
+  profiles:
+    active: ${cfg.env}
+

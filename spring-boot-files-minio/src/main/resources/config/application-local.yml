@@ -1,0 +1,7 @@
+#本地环境
+spring:
+  profiles: local
+minio:
+  endpoint: http://192.168.31.162:9000
+  accessKey: minioadmin
+  secretKey: minioadmin

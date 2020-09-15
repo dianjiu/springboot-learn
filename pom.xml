@@ -33,6 +33,8 @@
         <module>spring-boot-excal-jxl</module>
         <module>spring-boot-excal-ali</module>
         <module>spring-boot-files</module>
+        <module>spring-boot-files-fastdfs</module>
+        <module>spring-boot-files-minio</module>
         <module>spring-boot-log</module>
         <module>spring-boot-logback</module>
         <module>spring-boot-hello</module>
