@@ -10,34 +10,37 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.3.3.RELEASE</version>
+        <version>2.3.4.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
 
     <modules>
         <!--配置聚合的载体，模块都写在此处，方便按顺序统一构建-->
-        <module>spring-boot-core</module>
-        <module>spring-boot-config</module>
-        <module>spring-boot-aspect</module>
-        <module>spring-boot-docker</module>
-        <module>spring-boot-exception</module>
-        <module>spring-boot-mybatis</module>
-        <module>spring-boot-swagger</module>
-        <module>spring-boot-knife4j</module>
-        <module>spring-boot-thymeleaf</module>
-        <module>spring-boot-redis-jedis</module>
-        <module>spring-boot-redis-template</module>
-        <module>spring-boot-security</module>
-        <module>spring-boot-shiro</module>
-        <module>spring-boot-excal-poi</module>
-        <module>spring-boot-excal-jxl</module>
-        <module>spring-boot-excal-ali</module>
-        <module>spring-boot-files</module>
-        <module>spring-boot-files-fastdfs</module>
-        <module>spring-boot-files-minio</module>
-        <module>spring-boot-log</module>
-        <module>spring-boot-logback</module>
-        <module>spring-boot-hello</module>
+        <module>01-spring-boot-core</module>
+        <module>02-spring-boot-hello</module>
+        <module>03-spring-boot-config</module>
+        <module>04-spring-boot-aspect</module>
+        <module>05-spring-boot-exception</module>
+        <module>06-spring-boot-mybatis</module>
+        <module>07-spring-boot-mybatis-helper</module>
+        <module>08-spring-boot-mybatis-plus</module>
+        <module>09-spring-boot-redis-jedis</module>
+        <module>10-spring-boot-redis-template</module>
+        <module>11-spring-boot-thymeleaf</module>
+        <module>12-spring-boot-freemarker</module>
+        <module>13-spring-boot-log</module>
+        <module>14-spring-boot-logback</module>
+        <module>15-spring-boot-swagger</module>
+        <module>16-spring-boot-knife4j</module>
+        <module>17-spring-boot-excal-ali</module>
+        <module>18-spring-boot-excal-jxl</module>
+        <module>19-spring-boot-excal-poi</module>
+        <module>20-spring-boot-files</module>
+        <module>21-spring-boot-files-fastdfs</module>
+        <module>22-spring-boot-files-minio</module>
+        <module>23-spring-boot-docker</module>
+        <module>24-spring-boot-shiro</module>
+        <module>25-spring-boot-security</module>
     </modules>
 
     <properties>
