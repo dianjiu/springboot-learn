@@ -1,0 +1,10 @@
+server:
+  port: 8080
+
+# Spring配置
+spring:
+  # 服务模块
+  devtools:
+    restart:
+      # 热部署开关
+      enabled: true
