@@ -6,3 +6,9 @@ spring:
   application:
     name: dianjiu-blog
   profiles: local #开发环境
+
+ncun:
+  blog:
+    name: DianJiu Blog
+    desc: Learn Java Nodes
+    site: https://dianjiu.top
