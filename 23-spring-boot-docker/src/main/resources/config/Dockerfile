@@ -11,7 +11,7 @@ MAINTAINER dianjiu <dianjiu@dianjiu.cc>
 # 其效果是在主机 /var/lib/docker 目录下创建了一个临时文件，并链接到容器的/tmp
 VOLUME /tmp
 # 在当前镜像上执行Linux命令,这里我执行了2个run指令,第二个run指令是为了解决容器和宿主机时间不一致的问题
-ADD spring-boot-docker-1.0-SNAPSHOT.jar app.jar
+ADD 23-spring-boot-docker-1.0-SNAPSHOT.jar app.jar
 # 时区
 RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && echo 'Asia/Shanghai' >/etc/timezone
