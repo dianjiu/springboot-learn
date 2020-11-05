@@ -27,7 +27,7 @@ public class CustomRealm extends AuthorizingRealm {
     private LoginService loginService;
 
     /**
-     * 现权限认证，通过服务加载用户角色和权限信息设置进去。
+     * 实现权限认证，通过服务加载用户角色和权限信息设置进去。
      * @param principalCollection
      * @return
      */
@@ -62,8 +62,9 @@ public class CustomRealm extends AuthorizingRealm {
         if (authenticationToken.getPrincipal() == null) {
             return null;
         }
-        //获取用户信息
+        //获取用户输入的账号信息
         String name = authenticationToken.getPrincipal().toString();
+        //通过username从数据库中查找 User对象
         User user = loginService.getUserByName(name);
         if (user == null) {
             //这里返回后会报出对应异常

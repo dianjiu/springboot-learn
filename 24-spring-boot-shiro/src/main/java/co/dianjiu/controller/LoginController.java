@@ -8,11 +8,22 @@ import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.apache.shiro.subject.Subject;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class LoginController {
+
+    /**
+     * 登出
+     */
+    @PostMapping("/logout")
+    public String logout() {
+        //return loginService.logout();
+        return "logout success";
+    }
 
     @RequestMapping("/login")
     public String login(User user) {
@@ -36,11 +47,41 @@ public class LoginController {
         }
         return "login success";
     }
-    //注解验角色和权限
+
+    /**
+     * 注解验角色和权限
+     */
     @RequiresRoles("admin")
     @RequiresPermissions("add")
     @RequestMapping("/add")
     public String add() {
         return "success!";
     }
+
+    /**
+     * 需要登录才能访问
+     */
+    @GetMapping("/1")
+    public String test1() {
+        return "success";
+    }
+
+    /**
+     * 需要 admin 角色才能访问
+     */
+    @GetMapping("/2")
+    @RequiresRoles("admin")
+    public String test2() {
+        return "success";
+    }
+
+    /**
+     * 需要 "admin:add" 权限才能访问
+     */
+    @GetMapping("/3")
+    @RequiresPermissions("add")
+    public String test3() {
+        return "success";
+    }
+
 }

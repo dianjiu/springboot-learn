@@ -40,7 +40,7 @@ public class LoginServiceImpl implements LoginService {
         Map<String ,User> map = new HashMap<>();
         map.put(user.getUserName(), user);
 
-        Permissions permissions3 = new Permissions("3","query");
+        Permissions permissions3 = new Permissions("3","add");
         Set<Permissions> permissionsSet1 = new HashSet<>();
         permissionsSet1.add(permissions3);
         Role role1 = new Role("2","user",permissionsSet1);
