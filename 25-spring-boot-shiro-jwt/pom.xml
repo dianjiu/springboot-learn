@@ -19,6 +19,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>11</java.version>
+		<mysql.version>8.0.22</mysql.version>
 		<mybatis.version>2.1.3</mybatis.version>
 		<druid.version>1.2.2</druid.version>
 		<pagehelper.version>1.3.0</pagehelper.version>
@@ -56,6 +57,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql.version}</version>
 		</dependency>
 
 		<!-- Mybatis -->
@@ -152,19 +154,33 @@
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.3.6</version>
+				<version>1.4.0</version>
 				<configuration>
+					<!--允许移动生成的文件-->
+					<verbose>true</verbose>
+					<!-- 是否覆盖-->
+					<overwrite>true</overwrite>
+					<!-- 自动生成的配置 -->
 					<configurationFile>
 						src/main/resources/generator/generatorConfig.xml
 					</configurationFile>
-					<overwrite>true</overwrite>
-					<verbose>true</verbose>
 				</configuration>
 				<dependencies>
+					<!--配置这个依赖主要是为了等下在配置mybatis-generator.xml的时候可以不用配置classPathEntry这样的一个属性，避免代码的耦合度太高-->
+					<!--<dependency>
+						<groupId>mysql</groupId>
+						<artifactId>mysql-connector-java</artifactId>
+						<version>5.1.44</version>
+					</dependency>
+					<dependency>
+						<groupId>tk.mybatis</groupId>
+						<artifactId>mapper</artifactId>
+						<version>3.4.0</version>
+					</dependency>-->
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.46</version>
+						<version>${mysql.version}</version>
 					</dependency>
 					<dependency>
 						<groupId>tk.mybatis</groupId>
@@ -172,6 +188,15 @@
 						<version>${mapper.version}</version>
 					</dependency>
 				</dependencies>
+				<executions>
+					<execution>
+						<id>Generate MyBatis Artifacts</id>
+						<phase>package</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
