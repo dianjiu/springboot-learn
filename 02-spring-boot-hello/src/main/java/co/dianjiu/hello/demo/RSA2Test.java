@@ -19,16 +19,38 @@ public class RSA2Test {
     public static final String ALGORITHM_RSA_SIGN = "SHA256WithRSA";
     public static final int ALGORITHM_RSA_PRIVATE_KEY_LENGTH = 2048;
     //用于封装随机产生的公钥与私钥
-    private static Map<Integer, String> keyMap = new HashMap<Integer, String>();
+    private static Map<String, String> keyPairMap = new HashMap<String, String>();
 
     private RSA2Test() {
     }
 
     public static void main(String[] args) {
-        String privateKey="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDH4u7Shk55VvrOt7pEcyV4eLETNVgec1hGwtRc/YicYLNS8SSQlozESidoo7rh03QYHrEKswhltPfo63fOydkFWMAbX1M9VbJQin9OR2Xxu/OGBAUrXPArdfzlLpMtG+xsG2iapVBXOHx77E1DX0AehDw/jDGAawlOyqSavdWlVDDLQP2312FLvR9TjfBly9P3oQbbum9JrSwgkJM+rjwvElUC4Rs48w6l0RI+hJIe4RIoTyXefBQI4jNUrcVsJZpJEtp4khlmDJKx632fumg9zi4tctS/3MZTGoJaA1zei/UuzXD33nHsL+6ZAwCSayidLeXjKCn5CCAQO6PGKg2pAgMBAAECggEAA/+fJWj4YucBh2cXe80N39YSPL8hbyKBjpDRLLcJp48rpyoZwCay1C5jkW1NDL1tIhpjEkK4lUhEeU1UjTdudvPqi+GhSaXQNlo+57L38BkBaxnjfJWUXFo03+TJnupjFVqLAiTycXw4yUXV2dYq8zFT/zVvvBDoE8Jr/ohzoKYAb4ziahDPg7D15oaX8S6dAa/qBoSapLSO+rN6eELEqAaH8r4QVCtVpVzDLXcIpF9kgaJmAkJfrb9Cmi6dA7MBbwCjEK/mtyGJTZaw7ZTJR6+CumPmGZCjWppNawX/8ISYbZeAmX9mGSEp6iI17ciYZt79YfQGDOSvRgjBA67vrQKBgQDu4X5AVaxQwLKLFfuhoim9ZmB4/MAQntvCD5Oe7RQM/eepSX9LIuDcoj7tDjqCvPemEosLoR05WHxe8eLNFwcUzkiQFdhB2lNn02rBn8rCHTwZvf1WHwhkNTi0/szRgZexzRIqrUJrNlAiezsbcYxeoOsLqnKzQExNM4mTvPkcDwKBgQDWNgyPHTGXLpXjCPJ8HF92xveUOwXb+H8SVs5AVHwg+kJNvtjqAwASPnaBs9xMCEaXChF/2O04AUB29comjPZ3By0VmWiH3ngOucsIGih/9RDs0JTWaNaMDYvhA9huXKeIRpo8hyTLcLJ8Y0XVHgi8a68tnP+qfA5kANC17kDixwKBgQC9ayLQYt7rfZFWBo1soojUfZyb81ddFoqNfAqDZ9yRXLhYnUYJz1NcwG6DTNgKmUsKbgPBqfThZw/fvZApLkxYLCaP0jKULUobtyIc/NcrS0E/7E44/wyJYUZhBvZkXo1p2IHCQ3a6SuwKG4tH/Kbg1lrq+jJPfvnB8c7yzlL98wKBgBHKbWKZdxvqR5KSlKkQJjGUNs291S++xLb+NKUNHz4R6t3QIu3Uj/Xz8B23lW1PJqW2tVtb5d/H4tW+diqbfIDIPMtVcWQPawM2FRG4MnLmJKC2dhYUoPUCzwJCMoB/+34K9xZd1wV6d6hzCkK3+tvDScpNBsLfCMbvdmYVwpfTAoGBAMv12bQYwCK/EmezCl484AvNJ9/oIjqz1QyK141HXb5QXIXN4DL//TcngslDvqpqvoVXM4TRoc8Ne6aQeRaNgIeOuYeyixWi48x6csN5FC41lnUdEkPYIxqZCrkxglS8J/oLKRiu385gQPxd2EqVE21snajRoY3CiKXQkchxyycB";
-        String publicKey="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx+Lu0oZOeVb6zre6RHMleHixEzVYHnNYRsLUXP2InGCzUvEkkJaMxEonaKO64dN0GB6xCrMIZbT36Ot3zsnZBVjAG19TPVWyUIp/Tkdl8bvzhgQFK1zwK3X85S6TLRvsbBtomqVQVzh8e+xNQ19AHoQ8P4wxgGsJTsqkmr3VpVQwy0D9t9dhS70fU43wZcvT96EG27pvSa0sIJCTPq48LxJVAuEbOPMOpdESPoSSHuESKE8l3nwUCOIzVK3FbCWaSRLaeJIZZgySset9n7poPc4uLXLUv9zGUxqCWgNc3ov1Ls1w995x7C/umQMAkmsonS3l4ygp+QggEDujxioNqQIDAQAB";
-        System.out.println("签名:"+buildRSASignByPrivateKey("ABCabc123测试", privateKey));
-        System.out.println("校验:"+buildRSAverifyByPublicKey("ABCabc123测试",publicKey,buildRSASignByPrivateKey("ABCabc123测试", privateKey)));
+        //生成公钥私钥
+        initRSAKey(2048);
+        //私钥
+        String privateKey = keyPairMap.get("privateKey");
+        System.out.println("生成私钥："+privateKey);
+        //String privateKey="MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDH4u7Shk55VvrOt7pEcyV4eLETNVgec1hGwtRc/YicYLNS8SSQlozESidoo7rh03QYHrEKswhltPfo63fOydkFWMAbX1M9VbJQin9OR2Xxu/OGBAUrXPArdfzlLpMtG+xsG2iapVBXOHx77E1DX0AehDw/jDGAawlOyqSavdWlVDDLQP2312FLvR9TjfBly9P3oQbbum9JrSwgkJM+rjwvElUC4Rs48w6l0RI+hJIe4RIoTyXefBQI4jNUrcVsJZpJEtp4khlmDJKx632fumg9zi4tctS/3MZTGoJaA1zei/UuzXD33nHsL+6ZAwCSayidLeXjKCn5CCAQO6PGKg2pAgMBAAECggEAA/+fJWj4YucBh2cXe80N39YSPL8hbyKBjpDRLLcJp48rpyoZwCay1C5jkW1NDL1tIhpjEkK4lUhEeU1UjTdudvPqi+GhSaXQNlo+57L38BkBaxnjfJWUXFo03+TJnupjFVqLAiTycXw4yUXV2dYq8zFT/zVvvBDoE8Jr/ohzoKYAb4ziahDPg7D15oaX8S6dAa/qBoSapLSO+rN6eELEqAaH8r4QVCtVpVzDLXcIpF9kgaJmAkJfrb9Cmi6dA7MBbwCjEK/mtyGJTZaw7ZTJR6+CumPmGZCjWppNawX/8ISYbZeAmX9mGSEp6iI17ciYZt79YfQGDOSvRgjBA67vrQKBgQDu4X5AVaxQwLKLFfuhoim9ZmB4/MAQntvCD5Oe7RQM/eepSX9LIuDcoj7tDjqCvPemEosLoR05WHxe8eLNFwcUzkiQFdhB2lNn02rBn8rCHTwZvf1WHwhkNTi0/szRgZexzRIqrUJrNlAiezsbcYxeoOsLqnKzQExNM4mTvPkcDwKBgQDWNgyPHTGXLpXjCPJ8HF92xveUOwXb+H8SVs5AVHwg+kJNvtjqAwASPnaBs9xMCEaXChF/2O04AUB29comjPZ3By0VmWiH3ngOucsIGih/9RDs0JTWaNaMDYvhA9huXKeIRpo8hyTLcLJ8Y0XVHgi8a68tnP+qfA5kANC17kDixwKBgQC9ayLQYt7rfZFWBo1soojUfZyb81ddFoqNfAqDZ9yRXLhYnUYJz1NcwG6DTNgKmUsKbgPBqfThZw/fvZApLkxYLCaP0jKULUobtyIc/NcrS0E/7E44/wyJYUZhBvZkXo1p2IHCQ3a6SuwKG4tH/Kbg1lrq+jJPfvnB8c7yzlL98wKBgBHKbWKZdxvqR5KSlKkQJjGUNs291S++xLb+NKUNHz4R6t3QIu3Uj/Xz8B23lW1PJqW2tVtb5d/H4tW+diqbfIDIPMtVcWQPawM2FRG4MnLmJKC2dhYUoPUCzwJCMoB/+34K9xZd1wV6d6hzCkK3+tvDScpNBsLfCMbvdmYVwpfTAoGBAMv12bQYwCK/EmezCl484AvNJ9/oIjqz1QyK141HXb5QXIXN4DL//TcngslDvqpqvoVXM4TRoc8Ne6aQeRaNgIeOuYeyixWi48x6csN5FC41lnUdEkPYIxqZCrkxglS8J/oLKRiu385gQPxd2EqVE21snajRoY3CiKXQkchxyycB";
+        //公钥
+        String publicKey = keyPairMap.get("publicKey");
+        System.out.println("生成公钥："+publicKey);
+        //String publicKey="MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAx+Lu0oZOeVb6zre6RHMleHixEzVYHnNYRsLUXP2InGCzUvEkkJaMxEonaKO64dN0GB6xCrMIZbT36Ot3zsnZBVjAG19TPVWyUIp/Tkdl8bvzhgQFK1zwK3X85S6TLRvsbBtomqVQVzh8e+xNQ19AHoQ8P4wxgGsJTsqkmr3VpVQwy0D9t9dhS70fU43wZcvT96EG27pvSa0sIJCTPq48LxJVAuEbOPMOpdESPoSSHuESKE8l3nwUCOIzVK3FbCWaSRLaeJIZZgySset9n7poPc4uLXLUv9zGUxqCWgNc3ov1Ls1w995x7C/umQMAkmsonS3l4ygp+QggEDujxioNqQIDAQAB";
+        //私钥加密解密
+        String encryptByPrivateKey = buildRSAEncryptByPrivateKey("ABCabc123测试", privateKey);
+        System.out.println("私钥加密："+encryptByPrivateKey);
+        String decryptByPublicKey = buildRSADecryptByPublicKey(encryptByPrivateKey, publicKey);
+        System.out.println("公钥解密："+decryptByPublicKey);
+        //公钥加密解密
+        String encryptByPublicKey = buildRSAEncryptByPublicKey("ABCabc123测试", publicKey);
+        System.out.println("公钥加密："+encryptByPublicKey);
+        String decryptByPrivateKey = buildRSADecryptByPrivateKey(encryptByPublicKey, privateKey);
+        System.out.println("私钥解密："+decryptByPrivateKey);
+        //私钥对数据生成数字签名
+        String privateValue = buildRSASignByPrivateKey("ABCabc123测试", privateKey);
+        System.out.println("私钥签名："+privateValue);
+        //使用公钥校验数字签名
+        boolean publicValue = buildRSAverifyByPublicKey("ABCabc123测试", publicKey, privateValue);
+        System.out.println("公钥验签："+publicValue);
 
     }
     /**
@@ -37,7 +59,7 @@ public class RSA2Test {
      * @param keysize RSA1024已经不安全了,建议2048
      * @return 经过Base64编码后的公私钥Map, 键名分别为publicKey和privateKey
      */
-    public static Map<String, String> initRSAKey(int keysize) {
+    public static void initRSAKey(int keysize) {
         if (keysize != ALGORITHM_RSA_PRIVATE_KEY_LENGTH) {
             throw new IllegalArgumentException("RSA1024已经不安全了,请使用" + ALGORITHM_RSA_PRIVATE_KEY_LENGTH + "初始化RSA密钥对");
         }
@@ -58,10 +80,8 @@ public class RSA2Test {
         //得到私钥
         Key privateKey = keyPair.getPrivate();
         String privateKeyStr = Base64.getEncoder().encodeToString(privateKey.getEncoded());
-        Map<String, String> keyPairMap = new HashMap<String, String>();
         keyPairMap.put("publicKey", publicKeyStr);
         keyPairMap.put("privateKey", privateKeyStr);
-        return keyPairMap;
     }
 
     /**
