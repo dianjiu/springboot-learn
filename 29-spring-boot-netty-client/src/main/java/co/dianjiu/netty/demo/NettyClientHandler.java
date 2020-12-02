@@ -32,8 +32,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {
         System.out.println("--------");
-        ByteBuf in = (ByteBuf) msg;
-        System.out.println("NettyClientHandler read Message:"+in.toString(CharsetUtil.UTF_8));
+        System.out.println("ClientHandler read Message:"+msg);
     }
 
     /**

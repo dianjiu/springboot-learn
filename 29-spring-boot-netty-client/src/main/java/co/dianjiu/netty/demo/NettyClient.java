@@ -20,14 +20,9 @@ import java.net.InetSocketAddress;
  */
 public class NettyClient {
 
-    private final String host;
-    private final int port;
-
-
-    public NettyClient(String host, int port) {
-        this.host = host;
-        this.port = port;
-    }
+    static final String HOST = System.getProperty("host", "127.0.0.1");
+    static final int PORT = Integer.parseInt(System.getProperty("port", "7000"));
+    static final int SIZE = Integer.parseInt(System.getProperty("size", "256"));
 
 
     /**
@@ -36,10 +31,10 @@ public class NettyClient {
      * @throws Exception
      */
     public static void main(String[] args) throws Exception {
-        new NettyClient("127.0.0.1",20020).sendMessage("哈哈哈");
+        sendMessage("哈哈哈");
     }
 
-    private void sendMessage(String content) throws Exception {
+    private static void sendMessage(String content) throws Exception {
 
         /**
          * Netty用于接收客户端请求的线程池职责如下。
@@ -52,7 +47,7 @@ public class NettyClient {
             b.group(group)
                     .channel(NioSocketChannel.class)
                     .option(ChannelOption.TCP_NODELAY, true)
-                    .remoteAddress(new InetSocketAddress(host,port))
+                    .remoteAddress(new InetSocketAddress(HOST,PORT))
                     /*..handler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         public void initChannel(SocketChannel ch) throws Exception {

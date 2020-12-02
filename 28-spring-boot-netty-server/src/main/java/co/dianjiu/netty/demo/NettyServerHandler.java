@@ -29,11 +29,8 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
         System.out.println("server channelRead......");
         System.out.println(ctx.channel().remoteAddress()+"----->Server :"+ msg.toString());
-
-        ByteBuf in = (ByteBuf) msg;
-        System.out.println("NettyServerHandler received: "+in.toString(CharsetUtil.UTF_8));
         //将客户端的信息直接返回写入ctx
-        ctx.write(in);
+        ctx.write("server say :"+msg);
         //刷新缓存区
         ctx.flush();
     }
