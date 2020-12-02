@@ -13,6 +13,12 @@ import io.netty.util.CharsetUtil;
  * InboundHandler 用于处理数据流出本端（服务端）的 IO 事件
  */
 public class NettyServerHandler extends ChannelInboundHandlerAdapter {
+
+    @Override
+    public void channelActive(ChannelHandlerContext ctx) {
+        System.out.println("channelActive----->");
+    }
+
     /**
      * 对每一个传入的消息都要调用；
      * @param ctx
@@ -21,11 +27,15 @@ public class NettyServerHandler extends ChannelInboundHandlerAdapter {
      */
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
+        System.out.println("server channelRead......");
+        System.out.println(ctx.channel().remoteAddress()+"----->Server :"+ msg.toString());
 
         ByteBuf in = (ByteBuf) msg;
-        System.out.println("server received: "+in.toString(CharsetUtil.UTF_8));
-
+        System.out.println("NettyServerHandler received: "+in.toString(CharsetUtil.UTF_8));
+        //将客户端的信息直接返回写入ctx
         ctx.write(in);
+        //刷新缓存区
+        ctx.flush();
     }
 
 

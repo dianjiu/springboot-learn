@@ -10,10 +10,7 @@ package co.dianjiu.netty.demo;
  */
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
@@ -21,6 +18,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 
 import java.net.InetSocketAddress;
+import java.util.logging.Logger;
 
 @Slf4j
 @Component
@@ -34,6 +32,7 @@ public class NettyServer {
      */
     private final EventLoopGroup bossGroup = new NioEventLoopGroup();
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
+
     private Channel channel;
     /**
      * 启动服务
@@ -44,7 +43,7 @@ public class NettyServer {
      */
     public ChannelFuture  start(String hostname,int port) throws Exception {
 
-        final NettyServerHandler serverHandler = new NettyServerHandler();
+        //final NettyServerHandler serverHandler = new NettyServerHandler();
         ChannelFuture f = null;
         try {
             //ServerBootstrap负责初始化netty服务器，并且开始监听端口的socket请求
@@ -52,19 +51,25 @@ public class NettyServer {
             b.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .localAddress(new InetSocketAddress(hostname,port))
-                    .childHandler(new ChannelInitializer<SocketChannel>() {
+                    /*.childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
                         protected void initChannel(SocketChannel socketChannel) throws Exception {
-//                            为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
+                            // 为监听客户端read/write事件的Channel添加用户自定义的ChannelHandler
                             socketChannel.pipeline().addLast(serverHandler);
                         }
-                    });
-
+                    })*/
+                    .childHandler(new ServerChannelInitializer())
+                    .option(ChannelOption.SO_BACKLOG, 128)
+                    .childOption(ChannelOption.SO_KEEPALIVE, true);
+            // 绑定端口，开始接收进来的连接
             f = b.bind().sync();
             channel = f.channel();
             log.info("======NettyServer启动成功!!!=========");
         } catch (Exception e) {
             e.printStackTrace();
+            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+
         } finally {
             if (f != null && f.isSuccess()) {
                 log.info("Netty server listening " + hostname + " on port " + port + " and ready for connections...");

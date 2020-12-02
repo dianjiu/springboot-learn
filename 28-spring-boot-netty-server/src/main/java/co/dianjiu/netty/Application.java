@@ -11,11 +11,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
-	//@Value("${netty.port}")
-	private int port = 10010;
+	@Value("${netty.port}")
+	private int port;
 
-	//@Value("${netty.url}")
-	private String url = "127.0.0.1";
+	@Value("${netty.url}")
+	private String url;
 
 	@Autowired
 	private NettyServer nettyServer;
