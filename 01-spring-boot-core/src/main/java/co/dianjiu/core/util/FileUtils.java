@@ -52,7 +52,7 @@ public class FileUtils {
         String laststr = "";
         try {
             FileInputStream fileInputStream = new FileInputStream(Path);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, "UTF-8");
+            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, java.nio.charset.StandardCharsets.UTF_8);
             reader = new BufferedReader(inputStreamReader);
             String tempString = null;
             while ((tempString = reader.readLine()) != null) {
@@ -96,7 +96,7 @@ public class FileUtils {
                 map.put("fileName", f.getName());
             }else{ //路径为文件夹
                 map.put("retType", "3");
-                File fa[] = f.listFiles();
+                File[] fa = f.listFiles();
                 queryStr = queryStr==null ? "" : queryStr;//若queryStr传入为null,则替换为空（indexOf匹配值不能为null）
                 for (int i = 0; i < fa.length; i++) {
                     File fs = fa[i];

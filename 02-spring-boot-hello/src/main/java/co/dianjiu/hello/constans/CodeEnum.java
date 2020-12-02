@@ -17,8 +17,8 @@ public enum CodeEnum {
     NO_LOGIN("401", "未登录"),
     SYS_ERROR("500", "系统异常");
 
-    private String code;
-    private String msg;
+    private final String code;
+    private final String msg;
 
     // 根据code返回msg信息
     public String getMsgByCode(String code) {

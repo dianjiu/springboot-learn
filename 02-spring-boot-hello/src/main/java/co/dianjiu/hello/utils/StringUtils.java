@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class StringUtils {
 	public static final String WHITE_SPACE = " \t\n\r";
-	private static Pattern VARIABLE_PATTERN = Pattern.compile("\\$\\s*\\{?\\s*([\\._0-9a-zA-Z]+)\\s*\\}?");
+	private static final Pattern VARIABLE_PATTERN = Pattern.compile("\\$\\s*\\{?\\s*([\\._0-9a-zA-Z]+)\\s*\\}?");
 
 	public static String captureName(String name) {
 		char[] cs = name.toCharArray();

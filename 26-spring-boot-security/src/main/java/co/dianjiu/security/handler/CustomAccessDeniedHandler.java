@@ -22,7 +22,7 @@ import java.io.PrintWriter;
 @Component
 public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
-	private Logger log = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
+	private final Logger log = LoggerFactory.getLogger(CustomAccessDeniedHandler.class);
 
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response,

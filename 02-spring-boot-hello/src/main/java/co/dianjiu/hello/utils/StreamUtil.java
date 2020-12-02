@@ -79,8 +79,8 @@ public class StreamUtil {
     }
 
     private static class SynchronizedOutputStream extends OutputStream {
-        private OutputStream out;
-        private Object       lock;
+        private final OutputStream out;
+        private final Object       lock;
 
         SynchronizedOutputStream(OutputStream out) {
             this(out, out);

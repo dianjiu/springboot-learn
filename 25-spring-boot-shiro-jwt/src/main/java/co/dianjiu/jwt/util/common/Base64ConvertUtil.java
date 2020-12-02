@@ -20,7 +20,7 @@ public class Base64ConvertUtil {
      * @date 2018/8/21 15:28
      */
     public static String encode(String str) throws UnsupportedEncodingException {
-        byte[] encodeBytes = Base64.getEncoder().encode(str.getBytes("utf-8"));
+        byte[] encodeBytes = Base64.getEncoder().encode(str.getBytes(java.nio.charset.StandardCharsets.UTF_8));
         return new String(encodeBytes);
     }
 
@@ -32,7 +32,7 @@ public class Base64ConvertUtil {
      * @date 2018/8/21 15:28
      */
     public static String decode(String str) throws UnsupportedEncodingException {
-        byte[] decodeBytes = Base64.getDecoder().decode(str.getBytes("utf-8"));
+        byte[] decodeBytes = Base64.getDecoder().decode(str.getBytes(java.nio.charset.StandardCharsets.UTF_8));
         return new String(decodeBytes);
     }
 

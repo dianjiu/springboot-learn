@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Service
 public class UserDetailServiceImpl implements UserDetailsService {
-	private Logger log = LoggerFactory.getLogger(UserDetailServiceImpl.class);
+	private final Logger log = LoggerFactory.getLogger(UserDetailServiceImpl.class);
 
 	@Autowired
 	private UserDao userDao;

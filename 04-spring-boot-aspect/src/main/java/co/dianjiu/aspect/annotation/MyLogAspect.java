@@ -22,8 +22,6 @@ public class MyLogAspect {
     public void logPointCut() {
     }
 
-    ;
-
     // 3. 环绕通知
     @Around("logPointCut()")
     public void logAround(ProceedingJoinPoint joinPoint) {

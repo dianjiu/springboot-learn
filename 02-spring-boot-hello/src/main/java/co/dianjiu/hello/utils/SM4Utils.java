@@ -12,8 +12,8 @@ import java.util.regex.Pattern;
  *
  */
 public class SM4Utils {
-	private static String iv = "UISwD9fW6cFh9SNS";
-	private static boolean hexString = false;
+	private static final String iv = "UISwD9fW6cFh9SNS";
+	private static final boolean hexString = false;
 
 	public SM4Utils() {
 	}
@@ -28,8 +28,8 @@ public class SM4Utils {
 			keyBytes = secretKey.getBytes();
 			SM4 sm4 = new SM4();
 			sm4.sm4_setkey_enc(ctx, keyBytes);
-			byte[] encrypted = sm4.sm4_crypt_ecb(ctx, plainText.getBytes("UTF-8"));
-			String cipherText = new String(Base64.encodeBase64(encrypted), "UTF-8");
+			byte[] encrypted = sm4.sm4_crypt_ecb(ctx, plainText.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+			String cipherText = new String(Base64.encodeBase64(encrypted), java.nio.charset.StandardCharsets.UTF_8);
 			if (cipherText != null && cipherText.trim().length() > 0) {
 				Pattern p = Pattern.compile("\\s*|\t|\r|\n");
 				Matcher m = p.matcher(cipherText);
@@ -54,7 +54,7 @@ public class SM4Utils {
 			sm4.sm4_setkey_dec(ctx, keyBytes);
 			Base64.decodeBase64(cipherText.getBytes());
 			byte[] decrypted = sm4.sm4_crypt_ecb(ctx, Base64.decodeBase64(cipherText.getBytes()));
-			return new String(decrypted, "UTF-8");
+			return new String(decrypted, java.nio.charset.StandardCharsets.UTF_8);
 		} catch (Exception e) {
 			throw new BusinessException("100","SM4解密失败，请检查解密秘钥或解密类型,解密字段是否配置正确：cipherText: " + cipherText);
 
@@ -75,8 +75,8 @@ public class SM4Utils {
 
 			SM4 sm4 = new SM4();
 			sm4.sm4_setkey_enc(ctx, keyBytes);
-			byte[] encrypted = sm4.sm4_crypt_cbc(ctx, ivBytes, plainText.getBytes("UTF-8"));
-			String cipherText = new String(Base64.encodeBase64(encrypted), "UTF-8");
+			byte[] encrypted = sm4.sm4_crypt_cbc(ctx, ivBytes, plainText.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+			String cipherText = new String(Base64.encodeBase64(encrypted), java.nio.charset.StandardCharsets.UTF_8);
 
 			if (cipherText != null && cipherText.trim().length() > 0) {
 				Pattern p = Pattern.compile("\\s*|\t|\r|\n");
@@ -109,7 +109,7 @@ public class SM4Utils {
 			SM4 sm4 = new SM4();
 			sm4.sm4_setkey_dec(ctx, keyBytes);
 			byte[] decrypted = sm4.sm4_crypt_cbc(ctx, ivBytes, Base64.decodeBase64(cipherText.getBytes()));
-			return new String(decrypted, "UTF-8");
+			return new String(decrypted, java.nio.charset.StandardCharsets.UTF_8);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
@@ -134,7 +134,7 @@ public class SM4Utils {
 
 			String encryptData_ECB = encryptData_ECB(secretKey, plainText);
 
-			flag = cipherText.equals(encryptData_ECB) ? true : false;
+			flag = cipherText.equals(encryptData_ECB);
 			return flag;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -150,11 +150,11 @@ public class SM4Utils {
 		String cipherText = SM4Utils.encryptData_ECB(secretKey, plainText);
 		System.out.println("密文: " + cipherText);
 
-		System.out.println("");
+		System.out.println();
 
 		plainText = SM4Utils.decryptData_ECB("11HDESaAhiHHugD1", cipherText);
 		System.out.println("明文: " + plainText);
-		System.out.println("");
+		System.out.println();
 
 		boolean verifyEcb = SM4Utils.verifyEcb(secretKey, plainText, cipherText);
 		System.out.println("校验结果：" + verifyEcb);
@@ -162,7 +162,7 @@ public class SM4Utils {
 		System.out.println("CBC模式");
 		cipherText = SM4Utils.encryptData_CBC(secretKey, plainText);
 		System.out.println("密文: " + cipherText);
-		System.out.println("");
+		System.out.println();
 
 		plainText = SM4Utils.decryptData_CBC(secretKey, cipherText);
 		System.out.println("明文: " + plainText);

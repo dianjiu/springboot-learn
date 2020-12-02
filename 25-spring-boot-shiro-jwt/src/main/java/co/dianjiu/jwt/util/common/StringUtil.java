@@ -121,6 +121,6 @@ public class StringUtil {
      * @date 2018/9/4 14:53
      */
     public static String addSingleQuotes(String param) {
-        return "\'" + param + "\'";
+        return "'" + param + "'";
     }
 }

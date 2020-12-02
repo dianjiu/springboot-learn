@@ -133,7 +133,7 @@ public class ObjectUtils {
      */
     public static final String UTF82GB2312(String target) {
         try {
-            return new String(target.getBytes("UTF-8"), "gb2312");
+            return new String(target.getBytes(java.nio.charset.StandardCharsets.UTF_8), "gb2312");
         } catch (Exception localException) {
             System.err.println("UTF8 TO GB2312 change error!");
         }
@@ -147,7 +147,7 @@ public class ObjectUtils {
      */
     public static final String UTF82GBK(String target) {
         try {
-            return new String(target.getBytes("UTF-8"), "GBK");
+            return new String(target.getBytes(java.nio.charset.StandardCharsets.UTF_8), "GBK");
         } catch (Exception localException) {
             System.err.println("UTF8 TO GBK change error!");
         }
@@ -161,7 +161,7 @@ public class ObjectUtils {
      */
     public static final String UTF82ISO(String target) {
         try {
-            return new String(target.getBytes("UTF-8"), "ISO8859-1");
+            return new String(target.getBytes(java.nio.charset.StandardCharsets.UTF_8), "ISO8859-1");
         } catch (Exception localException) {
             System.err.println("UTF8 TO ISO8859-1 change error!");
         }
@@ -175,7 +175,7 @@ public class ObjectUtils {
      */
     public static final String Windows1252UTF8(String target) {
         try {
-            return new String(target.getBytes("Windows-1252"), "UTF-8");
+            return new String(target.getBytes("Windows-1252"), java.nio.charset.StandardCharsets.UTF_8);
         } catch (Exception localException) {
             System.err.println("Windows1252 To UTF8 chage error");
         }

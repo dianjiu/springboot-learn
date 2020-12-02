@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RSATest {
-    private static Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥
+    private static final Map<Integer, String> keyMap = new HashMap<Integer, String>();  //用于封装随机产生的公钥与私钥
     public static void main(String[] args) throws Exception {
         //生成公钥和私钥
         genKeyPair();
@@ -64,7 +64,7 @@ public class RSATest {
         //RSA加密
         Cipher cipher = Cipher.getInstance("RSA");
         cipher.init(Cipher.ENCRYPT_MODE, pubKey);
-        String outStr = Base64.encodeBase64String(cipher.doFinal(str.getBytes("UTF-8")));
+        String outStr = Base64.encodeBase64String(cipher.doFinal(str.getBytes(java.nio.charset.StandardCharsets.UTF_8)));
         return outStr;
     }
 
@@ -81,7 +81,7 @@ public class RSATest {
      */
     public static String decrypt(String str, String privateKey) throws Exception{
         //64位解码加密后的字符串
-        byte[] inputByte = Base64.decodeBase64(str.getBytes("UTF-8"));
+        byte[] inputByte = Base64.decodeBase64(str.getBytes(java.nio.charset.StandardCharsets.UTF_8));
         //base64编码的私钥
         byte[] decoded = Base64.decodeBase64(privateKey);
         RSAPrivateKey priKey = (RSAPrivateKey) KeyFactory.getInstance("RSA").generatePrivate(new PKCS8EncodedKeySpec(decoded));

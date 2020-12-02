@@ -78,8 +78,8 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 	 */
 	static final byte PAD = (byte) '=';
 
-	private static byte[] base64Alphabet = new byte[BASELENGTH];
-	private static byte[] lookUpBase64Alphabet = new byte[LOOKUPLENGTH];
+	private static final byte[] base64Alphabet = new byte[BASELENGTH];
+	private static final byte[] lookUpBase64Alphabet = new byte[LOOKUPLENGTH];
 
 	// Populating the lookup and character arrays
 	static {
@@ -118,11 +118,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 	private static boolean isBase64(byte octect) {
 		if (octect == PAD) {
 			return true;
-		} else if (base64Alphabet[octect] == -1) {
-			return false;
-		} else {
-			return true;
-		}
+		} else return base64Alphabet[octect] != -1;
 	}
 
 	/**
@@ -207,7 +203,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 		int lengthDataBits = binaryData.length * EIGHTBIT;
 		int fewerThan24bits = lengthDataBits % TWENTYFOURBITGROUP;
 		int numberTriplets = lengthDataBits / TWENTYFOURBITGROUP;
-		byte encodedData[] = null;
+		byte[] encodedData = null;
 		int encodedDataLength = 0;
 		int nbrChunks = 0;
 
@@ -328,7 +324,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 		}
 
 		int numberQuadruple = base64Data.length / FOURBYTE;
-		byte decodedData[] = null;
+		byte[] decodedData = null;
 		byte b1 = 0, b2 = 0, b3 = 0, b4 = 0, marker0 = 0, marker1 = 0;
 
 		// Throw away anything not in base64Data
@@ -385,7 +381,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 	 * @return The data, less whitespace (see RFC 2045).
 	 */
 	static byte[] discardWhitespace(byte[] data) {
-		byte groomedData[] = new byte[data.length];
+		byte[] groomedData = new byte[data.length];
 		int bytesCopied = 0;
 
 		for (int i = 0; i < data.length; i++) {
@@ -400,7 +396,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 			}
 		}
 
-		byte packedData[] = new byte[bytesCopied];
+		byte[] packedData = new byte[bytesCopied];
 
 		System.arraycopy(groomedData, 0, packedData, 0, bytesCopied);
 
@@ -415,7 +411,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 	 * @return The data, less non-base64 characters (see RFC 2045).
 	 */
 	static byte[] discardNonBase64(byte[] data) {
-		byte groomedData[] = new byte[data.length];
+		byte[] groomedData = new byte[data.length];
 		int bytesCopied = 0;
 
 		for (int i = 0; i < data.length; i++) {
@@ -424,7 +420,7 @@ public class Base64 implements BinaryEncoder, BinaryDecoder {
 			}
 		}
 
-		byte packedData[] = new byte[bytesCopied];
+		byte[] packedData = new byte[bytesCopied];
 
 		System.arraycopy(groomedData, 0, packedData, 0, bytesCopied);
 

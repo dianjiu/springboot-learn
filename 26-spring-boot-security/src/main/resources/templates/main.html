@@ -17,7 +17,7 @@
 				<a href="/main" class="logo">Task Manage</a>
 			</div>
 			<ul class="layui-nav layui-layout-right">
-				<li class="layui-nav-item"><a href="javascript:;" th:text="${username}"> </a>
+				<li class="layui-nav-item"><a href="javascript:" th:text="${username}"> </a>
 					<dl class="layui-nav-child">
 						<dd>
 							<form id="logoutForm" action="/logout" method="post"
@@ -35,7 +35,7 @@
 			<div class="layui-side-scroll">
 				<ul class="layui-nav layui-nav-tree layui-inline" lay-filter="demo">
 					<li class="layui-nav-item layui-nav-itemed"><a
-						href="javascript:;">资源管理</a>
+						href="javascript:">资源管理</a>
 						<dl class="layui-nav-child">
 							<dd>
 								<a  nav-id="001" data-url="/publicResource" onclick="active.tabAdd(this)">公共资源</a>
@@ -44,7 +44,7 @@
 								<a nav-id="002" data-url="/vipResource" onclick="active.tabAdd(this)">VIP资源</a>
 							</dd>
 						</dl></li>
-					<li class="layui-nav-item"><a href="javascript:;">系统管理</a>
+					<li class="layui-nav-item"><a href="javascript:">系统管理</a>
 						<dl class="layui-nav-child">
 							<dd>
 								<a href="">用户管理</a>

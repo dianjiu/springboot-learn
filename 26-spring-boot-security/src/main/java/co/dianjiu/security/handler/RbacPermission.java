@@ -17,7 +17,7 @@ import java.util.List;
 @Component("rbacPermission")
 public class RbacPermission{
 
-	private AntPathMatcher antPathMatcher = new AntPathMatcher();
+	private final AntPathMatcher antPathMatcher = new AntPathMatcher();
 
 	public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
 		Object principal = authentication.getPrincipal();

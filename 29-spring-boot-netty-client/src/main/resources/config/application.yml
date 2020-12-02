@@ -1,0 +1,9 @@
+#服务端口号
+server:
+  port: 8090 #原来是http的8080
+
+spring:
+  application:
+    name: netty-client
+  profiles:
+    active: lcoal

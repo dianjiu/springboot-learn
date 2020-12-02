@@ -18,7 +18,7 @@ public class RSA2Utils {
     public static final String ALGORITHM_RSA_SIGN = "SHA256WithRSA";
     public static final int ALGORITHM_RSA_PRIVATE_KEY_LENGTH = 2048;
     //用于封装随机产生的公钥与私钥
-    private static Map<String, String> keyPairMap = new HashMap<String, String>();
+    private static final Map<String, String> keyPairMap = new HashMap<String, String>();
 
     private RSA2Utils() {
     }

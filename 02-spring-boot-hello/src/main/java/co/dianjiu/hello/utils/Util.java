@@ -67,7 +67,7 @@ public class Util
      */
     public static byte[] byteConvert32Bytes(BigInteger n)
     {
-        byte tmpd[] = (byte[])null;
+        byte[] tmpd = null;
         if(n == null)
         {
             return null;
@@ -156,7 +156,7 @@ public class Util
             }
             System.out.print("0x" + hex.toUpperCase() + ",");
         }
-        System.out.println("");
+        System.out.println();
     }
     
     /**
@@ -635,7 +635,7 @@ public class Util
      *            byte[] 需要转换的字节数组
      * @return String 十六进制字符串
      */
-    public static String byteToHex(byte b[]) {
+    public static String byteToHex(byte[] b) {
         if (b == null) {
             throw new IllegalArgumentException(
                     "Argument b ( byte array ) is null! ");

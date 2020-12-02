@@ -22,9 +22,9 @@ public class HttpUtil {
             conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
             conn.setConnectTimeout(3000);
             o = new BufferedOutputStream(conn.getOutputStream());
-            o.write(body.getBytes("UTF-8"));
+            o.write(body.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             o.flush();
-            reader = new InputStreamReader(conn.getInputStream(), "UTF-8");
+            reader = new InputStreamReader(conn.getInputStream(), java.nio.charset.StandardCharsets.UTF_8);
             in = new BufferedReader(reader);
 
             String line = null;

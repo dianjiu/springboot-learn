@@ -43,7 +43,7 @@ public class IDCardGenerate {
             }
         } else {
             //随意(三位数为偶数代表女性 所以最后一位由性别控制)
-            String cardId = sb.toString();
+            String cardId = sb;
             int i = new Random().nextInt(100);
             if (i < 10) {
                 cardId = cardId + "0" + i;

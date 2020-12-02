@@ -60,7 +60,7 @@ public class MinIOController {
             response.setHeader("Content-type", "text/html;charset=UTF-8");
             String data = "文件下载失败";
             OutputStream ps = response.getOutputStream();
-            ps.write(data.getBytes("UTF-8"));
+            ps.write(data.getBytes(java.nio.charset.StandardCharsets.UTF_8));
             return;
         }
         try {
@@ -70,10 +70,10 @@ public class MinIOController {
             String url = fileUrl.split("/")[4];
             // 获取文件对象 bucketName，是指存储桶的名称 objectName，是指文件的路径，即存储桶下文件的相对路径
             InputStream object = minioUtils.getObject("test", url);
-            byte buf[] = new byte[1024];
+            byte[] buf = new byte[1024];
             int length = 0;
             response.reset();
-            response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileUrl.substring(fileUrl.lastIndexOf("/") + 1), "UTF-8"));
+            response.setHeader("Content-Disposition", "attachment;filename=" + URLEncoder.encode(fileUrl.substring(fileUrl.lastIndexOf("/") + 1), java.nio.charset.StandardCharsets.UTF_8));
             response.setContentType("application/octet-stream");
             response.setCharacterEncoding("UTF-8");
             OutputStream outputStream = response.getOutputStream();
@@ -87,7 +87,7 @@ public class MinIOController {
             response.setHeader("Content-type", "text/html;charset=UTF-8");
             String data = "文件下载失败";
             OutputStream ps = response.getOutputStream();
-            ps.write(data.getBytes("UTF-8"));
+            ps.write(data.getBytes(java.nio.charset.StandardCharsets.UTF_8));
         }
     }
 }

@@ -29,7 +29,7 @@ public class IOUtils {
         long count = 0L;
 
         int n;
-        for(boolean var5 = false; -1 != (n = input.read(buffer)); count += (long)n) {
+        for(boolean var5 = false; -1 != (n = input.read(buffer)); count += n) {
             output.write(buffer, 0, n);
         }
 

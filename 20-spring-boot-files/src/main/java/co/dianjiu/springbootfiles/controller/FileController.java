@@ -116,7 +116,7 @@ public class FileController {
         if(file.exists()){
             response.setContentType("application/vnd.ms-excel;charset=UTF-8");
             response.setCharacterEncoding("UTF-8");
-            response.setHeader("Content-Disposition", "attachment;fileName=" +   java.net.URLEncoder.encode(filename,"UTF-8"));
+            response.setHeader("Content-Disposition", "attachment;fileName=" +   java.net.URLEncoder.encode(filename, java.nio.charset.StandardCharsets.UTF_8));
             byte[] buffer = new byte[1024];
             //文件输入流
             FileInputStream fis = null;

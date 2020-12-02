@@ -11,16 +11,16 @@ public class SM4
 
     private int GET_ULONG_BE(byte[] b, int i) 
     {
-        int n = (int)(b[i] & 0xff) << 24 | (int)((b[i + 1] & 0xff) << 16) | (int)((b[i + 2] & 0xff) << 8) | (int)(b[i + 3] & 0xff) & 0xffffffff;
+        int n = (b[i] & 0xff) << 24 | ((b[i + 1] & 0xff) << 16) | ((b[i + 2] & 0xff) << 8) | b[i + 3] & 0xff & 0xffffffff;
         return n;
     }
 
     private void PUT_ULONG_BE(int n, byte[] b, int i) 
     {
-        b[i] = (byte)(int)(0xFF & n >> 24);
-        b[i + 1] = (byte)(int)(0xFF & n >> 16);
-        b[i + 2] = (byte)(int)(0xFF & n >> 8);
-        b[i + 3] = (byte)(int)(0xFF & n);
+        b[i] = (byte) (0xFF & n >> 24);
+        b[i + 1] = (byte) (0xFF & n >> 16);
+        b[i + 2] = (byte) (0xFF & n >> 8);
+        b[i + 3] = (byte) (0xFF & n);
     }
 
     private int SHL(int x, int n) 
@@ -137,13 +137,13 @@ public class SM4
         MK[1] = GET_ULONG_BE(key, 4);
         MK[2] = GET_ULONG_BE(key, 8);
         MK[3] = GET_ULONG_BE(key, 12);
-        k[0] = MK[0] ^ (int) FK[0];
-        k[1] = MK[1] ^ (int) FK[1];
-        k[2] = MK[2] ^ (int) FK[2];
-        k[3] = MK[3] ^ (int) FK[3];
+        k[0] = MK[0] ^ FK[0];
+        k[1] = MK[1] ^ FK[1];
+        k[2] = MK[2] ^ FK[2];
+        k[3] = MK[3] ^ FK[3];
         for (; i < 32; i++) 
         {
-            k[(i + 4)] = (k[i] ^ sm4CalciRK(k[(i + 1)] ^ k[(i + 2)] ^ k[(i + 3)] ^ (int) CK[i]));
+            k[(i + 4)] = (k[i] ^ sm4CalciRK(k[(i + 1)] ^ k[(i + 2)] ^ k[(i + 3)] ^ CK[i]));
             SK[i] = k[(i + 4)];
         }
     }
@@ -174,7 +174,7 @@ public class SM4
             return null;
         }
         
-        byte[] ret = (byte[]) null;
+        byte[] ret = null;
         if (mode == SM4_ENCRYPT) 
         {
             int p = 16 - input.length % 16;
