@@ -25,3 +25,4 @@ public class MinioProp {
     private String secretKey;
 }
 
+

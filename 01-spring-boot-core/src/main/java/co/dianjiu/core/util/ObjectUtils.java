@@ -1,4 +1,4 @@
-package co.dianjiu.minio.util;
+package co.dianjiu.core.util;
 
 
 import org.slf4j.Logger;
