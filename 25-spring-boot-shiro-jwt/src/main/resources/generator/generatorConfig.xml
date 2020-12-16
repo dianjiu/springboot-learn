@@ -40,7 +40,7 @@
         </plugin>
 
         <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
-                        connectionURL="jdbc:mysql://47.112.159.245:13306/shirojwt?serverTimezone=Asia/Shanghai"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/shirojwt?serverTimezone=Asia/Shanghai"
                         userId="root"
                         password="123456">
         </jdbcConnection>

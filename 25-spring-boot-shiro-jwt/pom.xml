@@ -128,77 +128,22 @@
 
 	<build>
 		<plugins>
-			<!-- Srping Boot 打包工具 -->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
-				<configuration>
-					<fork>true</fork>
-				</configuration>
 			</plugin>
-			<!-- 指定JDK编译版本 -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>${java.version}</source>
-					<target>${java.version}</target>
-					<encoding>${project.build.sourceEncoding}</encoding>
-				</configuration>
-			</plugin>
-			<!-- JavaDoc -->
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>3.0.0</version>
-			</plugin>
-			<!-- Mybatis Generator 逆向工程 -->
+			<!--引入mybatis生成器-->
 			<plugin>
 				<groupId>org.mybatis.generator</groupId>
 				<artifactId>mybatis-generator-maven-plugin</artifactId>
-				<version>1.4.0</version>
-				<configuration>
-					<!--允许移动生成的文件-->
-					<verbose>true</verbose>
-					<!-- 是否覆盖-->
-					<overwrite>true</overwrite>
-					<!-- 自动生成的配置 -->
-					<configurationFile>
-						src/main/resources/generator/generatorConfig.xml
-					</configurationFile>
-				</configuration>
+				<version>1.3.7</version>
 				<dependencies>
-					<!--配置这个依赖主要是为了等下在配置mybatis-generator.xml的时候可以不用配置classPathEntry这样的一个属性，避免代码的耦合度太高-->
-					<!--<dependency>
-						<groupId>mysql</groupId>
-						<artifactId>mysql-connector-java</artifactId>
-						<version>5.1.44</version>
-					</dependency>
-					<dependency>
-						<groupId>tk.mybatis</groupId>
-						<artifactId>mapper</artifactId>
-						<version>3.4.0</version>
-					</dependency>-->
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
 						<version>${mysql.version}</version>
 					</dependency>
-					<dependency>
-						<groupId>tk.mybatis</groupId>
-						<artifactId>mapper-spring-boot-starter</artifactId>
-						<version>${mapper.version}</version>
-					</dependency>
 				</dependencies>
-				<executions>
-					<execution>
-						<id>Generate MyBatis Artifacts</id>
-						<phase>package</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>
