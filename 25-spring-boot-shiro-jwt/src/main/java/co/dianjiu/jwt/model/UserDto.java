@@ -1,7 +1,8 @@
 package co.dianjiu.jwt.model;
 
+import co.dianjiu.jwt.model.entity.User;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wang.model.entity.User;
+
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import java.util.Date;

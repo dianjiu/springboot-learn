@@ -1,21 +1,18 @@
 package co.dianjiu.jwt.controller;
 
+import co.dianjiu.jwt.exception.CustomException;
+import co.dianjiu.jwt.exception.CustomUnauthorizedException;
+import co.dianjiu.jwt.model.UserDto;
+import co.dianjiu.jwt.model.common.BaseDto;
+import co.dianjiu.jwt.model.common.Constant;
+import co.dianjiu.jwt.model.common.ResponseBean;
+import co.dianjiu.jwt.model.valid.group.UserEditValidGroup;
+import co.dianjiu.jwt.model.valid.group.UserLoginValidGroup;
+import co.dianjiu.jwt.service.IUserService;
+import co.dianjiu.jwt.util.*;
+import co.dianjiu.jwt.util.common.StringUtil;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import com.wang.model.common.BaseDto;
-import com.wang.model.valid.group.UserEditValidGroup;
-import com.wang.model.valid.group.UserLoginValidGroup;
-import com.wang.util.JedisUtil;
-import com.wang.exception.CustomException;
-import com.wang.exception.CustomUnauthorizedException;
-import com.wang.model.UserDto;
-import com.wang.model.common.Constant;
-import com.wang.model.common.ResponseBean;
-import com.wang.service.IUserService;
-import com.wang.util.AesCipherUtil;
-import com.wang.util.JwtUtil;
-import com.wang.util.UserUtil;
-import com.wang.util.common.StringUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authz.annotation.Logical;
 import org.apache.shiro.authz.annotation.RequiresAuthentication;
@@ -131,7 +128,7 @@ public class UserController {
             throw new CustomUnauthorizedException("该帐号不存在(The account does not exist.)");
         }
         // 密码进行AES解密
-        String key = AesCipherUtil.deCrypto(userDtoTemp.getPassword());
+        String key = AesCipherUtil.AESDncode(userDtoTemp.getPassword());
         // 因为密码加密是以帐号+密码的形式进行加密的，所以解密后的对比是帐号+密码
         if (key.equals(userDto.getAccount() + userDto.getPassword())) {
             // 清除可能存在的Shiro权限信息缓存
@@ -242,7 +239,7 @@ public class UserController {
         if (userDto.getPassword().length() > Constant.PASSWORD_MAX_LEN) {
             throw new CustomException("密码最多8位(Password up to 8 bits.)");
         }
-        String key = AesCipherUtil.enCrypto(userDto.getAccount() + userDto.getPassword());
+        String key = AesCipherUtil.AESEncode(userDto.getAccount() + userDto.getPassword());
         userDto.setPassword(key);
         int count = userService.insert(userDto);
         if (count <= 0) {
@@ -276,7 +273,7 @@ public class UserController {
             if (userDto.getPassword().length() > Constant.PASSWORD_MAX_LEN) {
                 throw new CustomException("密码最多8位(Password up to 8 bits.)");
             }
-            String key = AesCipherUtil.enCrypto(userDto.getAccount() + userDto.getPassword());
+            String key = AesCipherUtil.AESEncode(userDto.getAccount() + userDto.getPassword());
             userDto.setPassword(key);
         }
         int count = userService.updateByPrimaryKeySelective(userDto);

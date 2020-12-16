@@ -1,20 +1,19 @@
 package co.dianjiu.jwt.config.shiro.jwt;
 
+import co.dianjiu.jwt.exception.CustomException;
+import co.dianjiu.jwt.model.common.Constant;
+import co.dianjiu.jwt.model.common.ResponseBean;
+import co.dianjiu.jwt.util.JedisUtil;
+import co.dianjiu.jwt.util.JwtUtil;
+import co.dianjiu.jwt.util.common.JsonConvertUtil;
+import co.dianjiu.jwt.util.common.PropertiesUtil;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
-import com.wang.exception.CustomException;
-import com.wang.model.common.Constant;
-import com.wang.model.common.ResponseBean;
-import com.wang.util.JedisUtil;
-import com.wang.util.JwtUtil;
-import com.wang.util.common.JsonConvertUtil;
-import com.wang.util.common.PropertiesUtil;
 import org.apache.shiro.web.filter.authc.BasicHttpAuthenticationFilter;
 import org.apache.shiro.web.util.WebUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;

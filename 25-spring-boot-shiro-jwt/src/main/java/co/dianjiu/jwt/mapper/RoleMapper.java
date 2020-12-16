@@ -1,7 +1,7 @@
 package co.dianjiu.jwt.mapper;
 
-import com.wang.model.RoleDto;
-import com.wang.model.UserDto;
+import co.dianjiu.jwt.model.RoleDto;
+import co.dianjiu.jwt.model.UserDto;
 import tk.mybatis.mapper.common.Mapper;
 
 import java.util.List;

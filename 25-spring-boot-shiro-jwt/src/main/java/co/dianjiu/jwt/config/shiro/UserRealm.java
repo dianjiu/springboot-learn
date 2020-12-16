@@ -1,16 +1,17 @@
 package co.dianjiu.jwt.config.shiro;
 
-import com.wang.config.shiro.jwt.JwtToken;
-import com.wang.util.JedisUtil;
-import com.wang.mapper.PermissionMapper;
-import com.wang.mapper.RoleMapper;
-import com.wang.mapper.UserMapper;
-import com.wang.model.PermissionDto;
-import com.wang.model.RoleDto;
-import com.wang.model.UserDto;
-import com.wang.model.common.Constant;
-import com.wang.util.JwtUtil;
-import com.wang.util.common.StringUtil;
+
+import co.dianjiu.jwt.config.shiro.jwt.JwtToken;
+import co.dianjiu.jwt.mapper.PermissionMapper;
+import co.dianjiu.jwt.mapper.RoleMapper;
+import co.dianjiu.jwt.mapper.UserMapper;
+import co.dianjiu.jwt.model.PermissionDto;
+import co.dianjiu.jwt.model.RoleDto;
+import co.dianjiu.jwt.model.UserDto;
+import co.dianjiu.jwt.model.common.Constant;
+import co.dianjiu.jwt.util.JedisUtil;
+import co.dianjiu.jwt.util.JwtUtil;
+import co.dianjiu.jwt.util.common.StringUtil;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;

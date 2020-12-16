@@ -1,8 +1,9 @@
 package co.dianjiu.jwt.config;
 
-import com.wang.exception.CustomException;
-import com.wang.exception.CustomUnauthorizedException;
-import com.wang.model.common.ResponseBean;
+
+import co.dianjiu.jwt.exception.CustomException;
+import co.dianjiu.jwt.exception.CustomUnauthorizedException;
+import co.dianjiu.jwt.model.common.ResponseBean;
 import org.apache.shiro.ShiroException;
 import org.apache.shiro.authz.UnauthenticatedException;
 import org.apache.shiro.authz.UnauthorizedException;

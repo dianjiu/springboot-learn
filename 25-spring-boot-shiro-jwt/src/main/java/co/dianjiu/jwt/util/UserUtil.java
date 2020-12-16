@@ -1,9 +1,9 @@
 package co.dianjiu.jwt.util;
 
-import com.wang.exception.CustomException;
-import com.wang.mapper.UserMapper;
-import com.wang.model.UserDto;
-import com.wang.model.common.Constant;
+import co.dianjiu.jwt.exception.CustomException;
+import co.dianjiu.jwt.mapper.UserMapper;
+import co.dianjiu.jwt.model.UserDto;
+import co.dianjiu.jwt.model.common.Constant;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

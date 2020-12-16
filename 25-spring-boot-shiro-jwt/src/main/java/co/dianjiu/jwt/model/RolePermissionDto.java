@@ -1,6 +1,7 @@
 package co.dianjiu.jwt.model;
 
-import com.wang.model.entity.RolePermission;
+import co.dianjiu.jwt.model.entity.RolePermission;
+
 import javax.persistence.Table;
 
 /**

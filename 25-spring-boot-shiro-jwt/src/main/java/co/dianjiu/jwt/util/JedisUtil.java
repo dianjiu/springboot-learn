@@ -1,9 +1,9 @@
 package co.dianjiu.jwt.util;
 
-import com.wang.exception.CustomException;
-import com.wang.model.common.Constant;
-import com.wang.util.common.StringUtil;
-import com.wang.util.common.SerializableUtil;
+import co.dianjiu.jwt.exception.CustomException;
+import co.dianjiu.jwt.model.common.Constant;
+import co.dianjiu.jwt.util.common.SerializableUtil;
+import co.dianjiu.jwt.util.common.StringUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import redis.clients.jedis.Jedis;

@@ -1,6 +1,7 @@
 package co.dianjiu.jwt.service;
 
-import com.wang.model.UserDto;
+
+import co.dianjiu.jwt.model.UserDto;
 
 /**
  *

@@ -1,6 +1,6 @@
 package co.dianjiu.jwt.util.common;
 
-import com.wang.exception.CustomException;
+import co.dianjiu.jwt.exception.CustomException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

@@ -1,6 +1,6 @@
 package co.dianjiu.jwt.config.redis;
 
-import com.wang.util.common.StringUtil;
+import co.dianjiu.jwt.util.common.StringUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;

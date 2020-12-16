@@ -1,6 +1,6 @@
 package co.dianjiu.jwt.service.impl;
 
-import com.wang.service.IBaseService;
+import co.dianjiu.jwt.service.IBaseService;
 import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import tk.mybatis.mapper.common.Mapper;

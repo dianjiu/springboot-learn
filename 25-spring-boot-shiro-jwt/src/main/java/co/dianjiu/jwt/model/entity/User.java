@@ -1,13 +1,16 @@
 package co.dianjiu.jwt.model.entity;
 
+import co.dianjiu.jwt.model.valid.group.UserEditValidGroup;
+import co.dianjiu.jwt.model.valid.group.UserLoginValidGroup;
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.wang.model.valid.group.UserEditValidGroup;
-import com.wang.model.valid.group.UserLoginValidGroup;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 /**
  * User

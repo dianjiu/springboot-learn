@@ -1,10 +1,10 @@
 package co.dianjiu.jwt.config.shiro.cache;
 
-import com.wang.util.JwtUtil;
-import com.wang.util.JedisUtil;
-import com.wang.model.common.Constant;
-import com.wang.util.common.PropertiesUtil;
-import com.wang.util.common.SerializableUtil;
+import co.dianjiu.jwt.model.common.Constant;
+import co.dianjiu.jwt.util.JedisUtil;
+import co.dianjiu.jwt.util.JwtUtil;
+import co.dianjiu.jwt.util.common.PropertiesUtil;
+import co.dianjiu.jwt.util.common.SerializableUtil;
 import org.apache.shiro.cache.Cache;
 import org.apache.shiro.cache.CacheException;
 

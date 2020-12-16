@@ -1,7 +1,7 @@
 package co.dianjiu.jwt.config.shiro;
 
-import com.wang.config.shiro.jwt.JwtFilter;
-import com.wang.config.shiro.cache.CustomCacheManager;
+import co.dianjiu.jwt.config.shiro.cache.CustomCacheManager;
+import co.dianjiu.jwt.config.shiro.jwt.JwtFilter;
 import org.apache.shiro.mgt.DefaultSessionStorageEvaluator;
 import org.apache.shiro.mgt.DefaultSubjectDAO;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;

@@ -1,6 +1,7 @@
 package co.dianjiu.jwt.model;
 
-import com.wang.model.entity.UserRole;
+import co.dianjiu.jwt.model.entity.UserRole;
+
 import javax.persistence.Table;
 
 /**

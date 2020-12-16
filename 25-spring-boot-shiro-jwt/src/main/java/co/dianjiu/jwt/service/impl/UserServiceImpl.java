@@ -1,7 +1,7 @@
 package co.dianjiu.jwt.service.impl;
 
-import com.wang.model.UserDto;
-import com.wang.service.IUserService;
+import co.dianjiu.jwt.model.UserDto;
+import co.dianjiu.jwt.service.IUserService;
 import org.springframework.stereotype.Service;
 
 /**
