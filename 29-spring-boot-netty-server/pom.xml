@@ -3,10 +3,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>co.dianjiu</groupId>
-	<artifactId>29-spring-boot-netty-client</artifactId>
+	<artifactId>29-spring-boot-netty-server</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>29-spring-boot-netty-client</name>
-	<description>Netty client for Spring Boot</description>
+	<name>29-spring-boot-netty-server</name>
+	<description>Netty Server for Spring Boot</description>
 
 	<!-- 引入父工程的spring boot依赖 -->
 	<parent>
@@ -41,11 +41,6 @@
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
 			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
