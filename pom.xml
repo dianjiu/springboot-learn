@@ -46,6 +46,7 @@
         <module>28-spring-boot-socket</module>
         <module>29-spring-boot-netty-server</module>
         <module>30-spring-boot-netty-client</module>
+        <module>31-spring-boot-netty-chatroom</module>
     </modules>
 
     <properties>

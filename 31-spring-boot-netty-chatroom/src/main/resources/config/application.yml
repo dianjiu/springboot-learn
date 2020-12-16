@@ -1,0 +1,13 @@
+#服务端口号
+server:
+  port: 18092 #原来是http的8080
+  
+spring:
+  application:
+    name: netty-server
+  profiles:
+    active: ${cfg.env}
+
+logging:
+  config: classpath:logback-spring.xml
+
