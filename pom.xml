@@ -47,6 +47,7 @@
         <module>29-spring-boot-netty-server</module>
         <module>30-spring-boot-netty-client</module>
         <module>31-spring-boot-netty-chatroom</module>
+        <module>32-spring-boot-custome-static-route</module>
     </modules>
 
     <properties>
