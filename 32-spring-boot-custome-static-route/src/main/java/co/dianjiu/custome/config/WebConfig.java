@@ -16,7 +16,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Autowired
     private ThemeConfig themeConfig;
 
-    @Bean
+    /*@Bean
     public MyInterceptor myInterceptor() {
         return new MyInterceptor();
     }
@@ -30,7 +30,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .excludePathPatterns("/swagger-resources/**", "/webjars/**", "/v2/**", "/swagger-ui.html/**")
                 .excludePathPatterns("/login/register");
 
-    }
+    }*/
 
     /**
      * 静态资源资源映射
