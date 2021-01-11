@@ -1,10 +1,7 @@
 package co.dianjiu.excal.pojo.dto;
 
-import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import lombok.Data;
-
-import java.util.Date;
 
 @Data
 public class OrderDTO {
@@ -33,6 +30,8 @@ public class OrderDTO {
     @ExcelProperty("结束地址")
     private String endAddress;*/
 
+    public OrderDTO() {
+    }
 
     public OrderDTO(Integer id, String orderId, String driverId) {
         this.id = id;

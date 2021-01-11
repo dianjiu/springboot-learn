@@ -1,5 +1,4 @@
-package co.dianjiu.core.util;
-
+package co.dianjiu.excal.utils;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -356,7 +355,7 @@ public class FileUtils {
                 file.delete();
             }
         } catch(Exception e) {
-//            log.error("删除文件失败");
+            log.error("删除文件失败");
         }
     }
     /**
@@ -370,7 +369,7 @@ public class FileUtils {
                 dir.mkdirs();
             }
         } catch (Exception e) {
-//            log.error("新建目录操作出错");
+            log.error("新建目录操作出错");
             e.printStackTrace();
         }
         return dir;
