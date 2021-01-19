@@ -3,6 +3,7 @@ package co.dianjiu.excal.demo;
 
 import co.dianjiu.excal.listener.OracleDTOListener;
 import co.dianjiu.excal.pojo.dto.OrderDTO;
+import co.dianjiu.excal.pojo.dto.PackagePremiumQuotedDTO;
 import co.dianjiu.excal.utils.FileUtils;
 import com.alibaba.excel.EasyExcel;
 import com.alibaba.excel.ExcelReader;
@@ -12,15 +13,20 @@ import com.alibaba.excel.write.metadata.WriteSheet;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Test01 {
     public static void simpleWrite() {
         // 写法1
         File file = FileUtils.mkDir("c://abcd");
-        String fileName = file+"/"+"simpleWrite"+".xlsx";
-        OrderDTO orderDTO = new OrderDTO(1,"001","002");
-        ArrayList<OrderDTO> list = new ArrayList<>();
-        list.add(orderDTO);
+        //String fileName = file+"/"+"simpleWrite"+".xlsx";
+        String fileName = file+"/"+"银行网点费率导入模板"+".xlsx";
+        //OrderDTO orderDTO = new OrderDTO(1,"001","002");
+        PackagePremiumQuotedDTO packagePremiumQuotedDTO = new PackagePremiumQuotedDTO("P060814-T1","方案B","0105100041","广西农信社","0105101393","河池六甲信用社","7018","广西农信社各网点","0608","0600001",0.003500);
+        //ArrayList<OrderDTO> list = new ArrayList<>();
+        List<PackagePremiumQuotedDTO> list = new ArrayList<>();
+        //list.add(orderDTO);
+        list.add(packagePremiumQuotedDTO);
         // 这里 需要指定写用哪个class去写，然后写到第一个sheet，名字为模板 然后文件流会自动关闭
         // 如果这里想使用03 则 传入excelType参数即可
         //EasyExcel.write(fileName, OrderDTO.class).sheet("模板").doWrite(list);
@@ -28,7 +34,8 @@ public class Test01 {
         // 写法2
         //fileName = "simpleWrite.xlsx";
         // 这里 需要指定写用哪个class去写
-        ExcelWriter excelWriter = EasyExcel.write(fileName, OrderDTO.class).build();
+        //ExcelWriter excelWriter = EasyExcel.write(fileName, OrderDTO.class).build();
+        ExcelWriter excelWriter = EasyExcel.write(fileName, PackagePremiumQuotedDTO.class).build();
         WriteSheet writeSheet = EasyExcel.writerSheet("模板").build();
         excelWriter.write(list, writeSheet);
         // 千万别忘记finish 会帮忙关闭流
@@ -58,8 +65,9 @@ public class Test01 {
     }
 
     public static void main(String[] args) {
-//        simpleWrite();
-        System.out.println(FileUtils.isFileExist("c:/abcd/simpleWrite.xlsx"));
-        simpleRead();
+        simpleWrite();
+        System.out.println(FileUtils.isFileExist("c:/abcd/银行网点费率导入模板.xlsx"));
+        //System.out.println(FileUtils.isFileExist("c:/abcd/simpleWrite.xlsx"));
+        //simpleRead();
     }
 }
