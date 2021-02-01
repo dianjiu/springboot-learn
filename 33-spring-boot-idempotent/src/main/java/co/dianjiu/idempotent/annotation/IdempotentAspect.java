@@ -1,6 +1,5 @@
 package co.dianjiu.idempotent.annotation;
 
-import co.dianjiu.idempotent.exception.IdempotentException;
 import co.dianjiu.idempotent.utils.IdempotentKeyUtil;
 import co.dianjiu.idempotent.utils.RedisUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -16,7 +15,6 @@ import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
 
 import java.lang.reflect.Method;
-import java.util.concurrent.TimeUnit;
 
 @Component
 @Slf4j
@@ -61,14 +59,15 @@ public class IdempotentAspect {
         String key = String.format(KEY_TEMPLATE, IdempotentKeyUtil.generate(method, keys, argNames, args));
         log.info(desc+"的redis的key为"+key);
 
-        Boolean result = redisTemplate.opsForValue().setIfAbsent(key, "0", idempotent.expirMillis(), TimeUnit.SECONDS);
+        /*Boolean result = redisTemplate.opsForValue().setIfAbsent(key, "0", idempotent.expirMillis(), TimeUnit.SECONDS);
 
         if (result) {
             return jPoint.proceed();
         } else {
             log.info("数据幂等错误");
             throw new IdempotentException("幂等校验失败。key值为：" + IdempotentKeyUtil.getKeyOriginalString(method, keys, argNames, args));
-        }
+        }*/
+        return jPoint.proceed();
     }
 
     private String[] getArgNames(ProceedingJoinPoint jPoint) {
