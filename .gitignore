@@ -1,5 +1,7 @@
 .settings
+.history
 .classpath
 .factorypath
 .project
 target
+*.log
